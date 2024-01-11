@@ -5,8 +5,8 @@
 
 > ### Intuition
 > Basic binary search:
-> - Array must be sorted - the description mentions "<em>sorted in ascending order</em>"
-> - Using left & right index to calculate the middle index
+> - Array must be sorted - the description mentions "<em>sorted in ascending order</em>".
+> - Using left & right index to calculate the middle index.
 
 ### Approach
 Compare the target with the middle element. 
@@ -68,10 +68,9 @@ var search = function(nums, target) {
 
 > ### Intuition
 > - Array element cannot be "remove". It can only be overridden.
-> - Ovveridden using swap might update element position and change corresponding index. The exercise description mentions "<em>The order of the elements may be changed</em>" so index update is accepted
-> - This exercise requires **in-place** removal, so we should **NOT** consider constructing a new array to return result
-> - Although it asks for returning the size of the new arry, the test still checks the updated array copy. So **remember** the updated element has to moved to the left and the new array should start from the 0 index.
-
+> - Ovveridden using swap might update element position and change corresponding index. The exercise description mentions "<em>The order of the elements may be changed</em>" so index update is accepted.
+> - This exercise requires **in-place** removal, so we should **NOT** consider constructing a new array to return result.
+> - Although it asks for returning the size of the new arry, the test still checks the updated array copy. So **remember to update the array copy** so the new array start from index 0 and all new elements are moved to the left.
 ### Approach
 1. Brute Force
 - Use 2 For loops: 1 to iterate all the element, an internal loop to "remove" the element by moving right elements to the left
@@ -88,7 +87,7 @@ Or
 
 /**
 * Brute Force
-* Time complexity：O(N^2)
+* Time complexity：O(N)
 * Space complexity：O(1)
 **/
 var removeElement = function(nums, val) {
