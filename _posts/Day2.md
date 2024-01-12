@@ -77,6 +77,11 @@ var sortedSquares = function(nums) {
 - When to expand the window: when the sum of elements < target and iterate each element
 - When to shrink the window: when the sum of elements >= target
 
+3. Prefix sum: 
+- For each i-th element, calculate the sum of 0th to i-1-th elements before it; Store the sums in a new array
+- For each i, using binary search to find out a boudary when sum[bound] = sum[i - 1] + target
+- Return the minimum value of bound - i + 1
+
 ```
 /**
  * @param {number[]} nums
@@ -114,9 +119,6 @@ var minSubArrayLen = function(target, nums) {
     let left = right = 0;
     let sum = 0;
 
-    // while(left <= right) {
-        /* 不可以用这个， 因为假如第一个元素就大于等于target，那么相当于后面的元素都没遍历了 */
-    // }
     for (; right < nums.length; right++) {
         sum += nums[right];
         while(sum >= target) {
@@ -125,6 +127,50 @@ var minSubArrayLen = function(target, nums) {
         }
     }
     return subLength === Infinity ? 0 : subLength;
+};
+
+/**
+* Prefix sum - For each i-th element, calculate the sum of elements before it; then binary search a boundary for sum[bound] - sum[i-1] >= target then return the minimum sublength of k - j + 1
+* Time complexity：O(N * logN)
+* Space complexity：O(1)
+**/
+var binarySearchIndex = function(target, array) {
+    let left = 0, right = array.length;
+
+    while (left < right) {
+        let mid = left + ((right - left) >> 1);
+        if (target > array[mid]) {
+            left = mid + 1;
+        } else if (target < array[mid]) {
+            right = mid;
+        } else {
+            return mid;
+        }
+    }
+    return right === array.length ? -1 : right;
+}
+
+var minSubArrayLen = function(target, nums) {
+    let len = nums.length;
+    if (nums.length === 0) return 0;
+
+    let subLength = Infinity;
+    let sums = new Array(len + 1).fill(0);
+    for (let i = 1; i <= len; i++) {
+        sums[i] = sums[i - 1] + nums[i - 1];
+    }
+
+    for (let i = 1; i <= len; i++) {     // Starting from 1 because i-1 will not out of memory range
+        let checkSum = target + sums[i - 1];     
+
+        let boundary = binarySearchIndex(checkSum, sums);
+
+        // If boudary < 0, it means there's no such boundary makes sums[boundary] - sums[i - 1]
+        if (boundary >= 0 ) {
+            subLength = Math.min(subLength, boundary - i + 1); 
+        }
+    }
+    return subLength === Infinity ? 0 : subLength; 
 };
 ```
 
@@ -165,25 +211,25 @@ var generateMatrix = function(n) {
         let row = startY;
         let col = startX;
         for (; col < n - offset; col++) {
-            matrix[row][col] = count++;
+            matrix[row][col] = count++;    // Fill the top edge
         }
         for (; row < n - offset; row++) {
-            matrix[row][col] = count++;
+            matrix[row][col] = count++;    // Fill the right edge
         }
         for (; col > startX; col--) {
-            matrix[row][col] = count++;
+            matrix[row][col] = count++;    // Fill the bottom edge
         }
         for (; row > startY; row--) {
-            matrix[row][col] = count++;
+            matrix[row][col] = count++;    // Fill the left edge
         }
 
-        startX++;
-        startY++;
+        startX++;     
+        startY++;       // After each round, the start point should move to the next unit of the diagonal
         offset++;
     }
 
     if (n % 2 === 1) {
-        matrix[mid][mid] = count;
+        matrix[mid][mid] = count;    // If n is an odd number, need to fill in the central unit individually
     }
 
     return matrix;
