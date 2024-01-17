@@ -123,7 +123,8 @@ var canConstruct = function(ransomNote, magazine) {
  * @return {number[][]}
  */
 
-/* 
+/*
+* 2 pointers
 * Time complexity：O(N ^ 2)
 * Space complexity：O(1)
 */
@@ -157,6 +158,57 @@ var threeSum = function(nums) {
     }
     return result;
 };
+
+
+/*
+* recursion using 2 pointers for 2sum
+* Time complexity：O(N ^ 2)
+* Space complexity：O(N)
+*/
+function nSum(nums, start, target, n) {
+    let result = [];
+    //if (nums.length < n) return result;
+
+    if (n === 2) {
+        result = TwoSum(nums, start, target);
+    } else {
+        for (let i = start; i < nums.length; i++) {
+            let sumResults = nSum(nums, i + 1, target - nums[i], n - 1); 
+                for (const item of sumResults) {
+                    result.push([nums[i], ...item]);
+                }
+                while (i < nums.length && nums[i] === nums[i + 1]) i++;
+        }
+    }
+    return result;
+}
+
+function TwoSum(nums, start, target) {
+    let result = [];
+    let left = start, right = nums.length - 1;
+
+    while (left < right) {
+        if (nums[left] + nums[right] < target) {
+            while (nums[left] === nums[left + 1]) left++;
+            left++;
+        }
+        else if (nums[left] + nums[right] > target) {
+            while (nums[right] === nums[right - 1]) right--;
+            right--; 
+        }
+        else {
+            result.push([nums[left], nums[right]]);
+            while (left < right && nums[left] === nums[++left]);
+            while (left < right && nums[right] === nums[--right]);
+        }
+    }
+    return result;
+}
+
+var threeSum = function(nums) {
+    nums.sort((a, b) => a - b);
+    return nSum(nums, 0, 0, 3);
+}
 ```
 
 ## 18 4sum
