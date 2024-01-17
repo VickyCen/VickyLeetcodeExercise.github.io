@@ -1,4 +1,4 @@
-# Day 4 - 242 Valid Anagram | 349 Intersection of Two Arrays | 202 Happy Number | 1 Two Sum
+# Day 5 - 242 Valid Anagram | 349 Intersection of Two Arrays | 202 Happy Number | 1 Two Sum
 
 ## 242 Valid Anagram
 [Description on Leetcode](https://leetcode.com/problems/valid-anagram/description/)
