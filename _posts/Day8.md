@@ -1,4 +1,4 @@
-# Day 7 - 28 Find The Index of The First Occurrence in A String | 459 Repeated Substring Pattern
+# Day 8 - 28 Find The Index of The First Occurrence in A String | 459 Repeated Substring Pattern
 
 ## 28 Find The Index of The First Occurrence in A String
 [Description on Leetcode](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/description/)
