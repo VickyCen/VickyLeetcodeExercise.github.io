@@ -20,7 +20,7 @@
  */
 
 /*
-* Time complexity; O(N)
+* Time complexity; O(NlogN)
 * Space complexity: O(1)
 */
 var findContentChildren = function(g, s) {
