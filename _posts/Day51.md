@@ -46,7 +46,7 @@ var nextGreaterElements = function(nums) {
 > Brute Force: if we check each bar individually - consider for each bar, the width of the rain (w) is 1, then we can calculate the height of the rain (h) for the current bar, then the volume of the rain = h * w. Then we can loop into all the bars and calculate all the sum of the volume (only sum the volume when h > 0). For each bar with index i, the h = Math.min(HighestBarOnLeft, HighestBarOnRight) - height[i].
 > Please note that for the first bar and last bar, it can store any rain so we don't need to calculate the h for them.
 > Monotonic stack: We maintain stack of storing index, where from stack top to bottom, the height[stack[i]]'s value is increasing:
-> - If height[i] > height[stack[stack.length - 1]]: stack.push(i);
+> - If height[i] < height[stack[stack.length - 1]]: stack.push(i);
 > - If height[i] === height[stack[stack.length - 1]]: stack.pop(); stack.push(i);   // pop out the old index, push the new index because the rain's height should always calculate based on the right bar
 > - If height[i] > height[stack[stack.length - 1]]: meaning there's a valley appears. So height[i] should be the next right bar of the valley, and if we pop up the stack top, it become the valley bottom, let's call it mid and midIndex = stack.pop(); so mid = height[midIndex]. Now the next left bar of the mid would be height[stack[stack.length - 1]]. We can calculate the h = Math.min(height[stack[stack.length - 1]], height[i]) - height[midIndex]. Then w = i - stack[stack.length - 1] - 1. And we can calculate the volume of rain = h * w.
 
