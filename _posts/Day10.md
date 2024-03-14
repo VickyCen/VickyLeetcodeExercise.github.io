@@ -13,7 +13,7 @@
 Using stacks: 
 1. If it meets left parenthese, push the corresponding right parenthese into the stack (Here we push the right parenthese instead of the left one, for the convenience of comparing with the current item when popping out the element of the stack. If we just push the left parenthese, when we pop it out for comparison, we need to double check with its right one). Remeber to check the stack length in the end. Only when all parentheses are mathcing && stack.length === 0 means the parentheses are valid
 
-```
+```js
 /**
  * @param {string} s
  * @return {boolean}
@@ -80,7 +80,7 @@ var isValid = function(s) {
 1. Use stack: Once found the iterate element === the top of the stack, pop out the element.
 2. Use 2 pointers and simulate stack: a fast pointer to iterate the elements (s[i]), a slow pointer pointing to the top of the stack (s[top]). If s[top] !== s[i], directly pop out the duplicate elements from the original string.
 
-```
+```js
 /**
  * @param {string} s
  * @return {string}
@@ -135,7 +135,7 @@ Using stack. When it meets number, push into the stack. When it's operator, pop 
 
 Note: the argument provided is string, so we need to convert string into number when loop into the string. Also, when doing "/" calculation, be aware of the requirement and the cases of positive / negative number. Remember that if we Math.floor the positive numbers, we will do the same by using Math.ceil when it's negative number. 
 
-```
+```js
 /**
  * @param {string[]} tokens
  * @return {number}
