@@ -12,7 +12,7 @@
 Compare the target with the middle element. 
 - Be aware of the range boundary in the loop: the slight difference between [left, right) & [left, right] 
 
-```
+```js
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -78,7 +78,7 @@ var search = function(nums, target) {
 Or
 2. Using 2 pointers: 1 pointer to interate elements, the other pointer to update new array's index
 
-```
+```js
 /**
  * @param {number[]} nums
  * @param {number} val
