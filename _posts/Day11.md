@@ -11,7 +11,7 @@ Using monotonic queue:
 1. Create the monotonic queue and define it's push & shift.
 2. Loop into the nums, using 2 pointers, 1 pointer j to iterate the nums. 1 pointer i pointing to the left element of the sliding window, to check whether we need to pop out the values from the monotonic queue as sliding window moves.
 
-```
+```js
 /**
  * @param {number[]} nums
  * @param {number} k
@@ -82,7 +82,7 @@ var maxSlidingWindow = function(nums, k) {
 2. Construct a max-heap, add frequency into the heap
 3. Maintian the max-heap size of k
 
-```
+```js
 /**
  * @param {number[]} nums
  * @param {number} k
