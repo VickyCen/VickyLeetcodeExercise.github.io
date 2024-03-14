@@ -21,7 +21,7 @@
 ### Approach
 Depending on which order of traversal it is required, we can call recursion functions on its left and right child node, and push the node value into the result array.
 
-```
+```js
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -94,7 +94,7 @@ The approach is quite different from preorder - Because we need traversal till t
 Postorder:
 Reverse the preorder traversal, such as mid - right - left to left - right - mid. To ensure the preorder traversal result printing mid - right - left, we need to make sure pushing the element into stack by left first then right
 
-```
+```js
 /* Iteration */
 
 // Preorder Traversal
@@ -155,7 +155,7 @@ var postorderTraversal = function(root) {
 For convenience, we should come up with a unified way for tree traversal when using iteration approach. In fact, we can still do it by using a stack. We can use stack to traverse each element by the reverse order, then when we need to pop out element from stack and write it into result array, we need to use a "null" signal to indicate this is the element to be pushed into result.
 
 
-```
+```js
 /* Unified way of iteration */
 
 // Preorder Traversal
