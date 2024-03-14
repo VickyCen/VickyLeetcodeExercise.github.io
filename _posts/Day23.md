@@ -14,7 +14,7 @@
 3. When sum reaches to target, push into the result
 4. Remember to backtrack
 
-```
+```js
 /**
  * @param {number[]} candidates
  * @param {number} target
@@ -61,7 +61,7 @@ var combinationSum = function(candidates, target) {
 ### Approach
 1. Recursion: If current sum > targetSum(here is n), then we don't need to continue on the recursion because the remamining numbers won't meet the requirement. Otherwise, we remove the duplicates and push the current number to path and add up to the sum, then continue on selecting the next number. Remember to backtrack both the path and sum.
 
-```
+```js
 /**
  * @param {number[]} candidates
  * @param {number} target
@@ -148,7 +148,7 @@ var combinationSum2 = function(candidates, target) {
 1. Recursion: similar to the combination, we use a for-loop for all elements in the string, and for each path, we use recurse to traverse all the path. Remember to back track after each recursion.
 2. isPalindrome: Use double pointer. Or if s[0] == s[n-1] && s[1:n-2] isPalindrome, then s[0:n-1] isPalindrome. We can utilise a 2-dimension array to record isPal[i][j] isPalindrome or not. isPal[i][j] means s[i:j] (including inde i and j) is Palindrome or not.
 
-```
+```js
 /**
  * @param {string} s
  * @return {string[][]}
