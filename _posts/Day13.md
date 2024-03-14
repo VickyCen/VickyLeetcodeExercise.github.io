@@ -15,7 +15,7 @@
 ### Approach
 Basic tree traversal, when traverse a node, swap its left node & right node.
 
-```
+```js
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
@@ -95,7 +95,7 @@ var invertTree = function(root) {
 1. Recursion: by comparing left node from left subtree and right node from right subtree to see if it's symmetric.
 2. Using queue to push nodes from left.left, right.right, left.right and right.left, and comparing 2 nodes in pairs. (Note this is different from level order traversal (BFS). The approach here is actually DFS, very similiar to recursion but we can use either queue or stack).
 
-```
+```js
 /**
  * Definition for a binary tree node.
  * function TreeNode(val, left, right) {
